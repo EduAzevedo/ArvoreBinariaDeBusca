@@ -8,14 +8,28 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
+/**
+ * Classe que representa uma árvore binária.
+ *
+ * @param <T> Tipo dos elementos armazenados na árvore, que devem ser comparáveis.
+ */
 public class ArvoreBinaria<T extends Comparable<T>> implements IArvoreBinaria<T> {
 
     private No<T> raiz;
 
+    /**
+     * Cria uma nova árvore binária vazia.
+     */
     public ArvoreBinaria() {
         this.raiz = null;
     }
 
+    /**
+     * Insere um nó na árvore.
+     *
+     * @param no Nó a ser inserido.
+     * @throws NoExistenteException Se o nó com o mesmo valor já existe na árvore.
+     */
     @Override
     public void inserir(No<T> no) throws NoExistenteException {
         if (no == null) {
@@ -52,6 +66,13 @@ public class ArvoreBinaria<T extends Comparable<T>> implements IArvoreBinaria<T>
         }
     }
 
+    /**
+     * Remove um nó da árvore.
+     *
+     * @param alvo Nó a ser removido.
+     * @return O nó removido.
+     * @throws NoInexistenteException Se o nó alvo não existe na árvore.
+     */
     public No<T> remover(No<T> alvo) throws NoInexistenteException {
         if (raiz == null) {
             throw new NoInexistenteException("A árvore está vazia.");
@@ -99,6 +120,13 @@ public class ArvoreBinaria<T extends Comparable<T>> implements IArvoreBinaria<T>
         return no;
     }
 
+    /**
+     * Busca um nó na árvore.
+     *
+     * @param no Nó a ser buscado.
+     * @return O nó encontrado.
+     * @throws NoInexistenteException Se o nó alvo não existe na árvore.
+     */
     @Override
     public No<T> buscar(No<T> no) throws NoInexistenteException {
         if (raiz == null) {
@@ -127,11 +155,21 @@ public class ArvoreBinaria<T extends Comparable<T>> implements IArvoreBinaria<T>
         throw new NoInexistenteException("O nó alvo não existe na árvore.");
     }
 
+    /**
+     * Verifica se a árvore está vazia.
+     *
+     * @return true se a árvore estiver vazia, caso contrário, false.
+     */
     @Override
     public boolean estaVazia() {
         return raiz == null;
     }
 
+    /**
+     * Verifica se a árvore é completa.
+     *
+     * @return true se a árvore for completa, caso contrário, false.
+     */
     @Override
     public boolean ehCompleta() {
         if (raiz == null) {
@@ -166,6 +204,11 @@ public class ArvoreBinaria<T extends Comparable<T>> implements IArvoreBinaria<T>
         return true;
     }
 
+    /**
+     * Calcula a altura da árvore.
+     *
+     * @return A altura da árvore.
+     */
     @Override
     public int altura() {
         if (raiz == null) {
@@ -199,6 +242,9 @@ public class ArvoreBinaria<T extends Comparable<T>> implements IArvoreBinaria<T>
         return altura;
     }
 
+    /**
+     * Imprime os elementos da árvore em ordem.
+     */
     @Override
     public void imprimirArvore() {
         if (raiz == null) {
@@ -220,6 +266,11 @@ public class ArvoreBinaria<T extends Comparable<T>> implements IArvoreBinaria<T>
         }
     }
 
+    /**
+     * Realiza a travessia em pré-ordem da árvore, imprimindo os elementos.
+     *
+     * @param no Nó a partir do qual a travessia começa.
+     */
     @Override
     public void preOrdem(No<T> no) {
         if (no == null) return;
@@ -228,6 +279,11 @@ public class ArvoreBinaria<T extends Comparable<T>> implements IArvoreBinaria<T>
         preOrdem((No<T>) no.getFilhoDir());
     }
 
+    /**
+     * Realiza a travessia em ordem da árvore, imprimindo os elementos.
+     *
+     * @param no Nó a partir do qual a travessia começa.
+     */
     @Override
     public void inOrdem(No<T> no) {
         if (no == null) return;
@@ -236,6 +292,11 @@ public class ArvoreBinaria<T extends Comparable<T>> implements IArvoreBinaria<T>
         inOrdem((No<T>) no.getFilhoDir());
     }
 
+    /**
+     * Realiza a travessia em pós-ordem da árvore, imprimindo os elementos.
+     *
+     * @param no Nó a partir do qual a travessia começa.
+     */
     @Override
     public void posOrdem(No<T> no) {
         if (no == null) return;
@@ -244,6 +305,11 @@ public class ArvoreBinaria<T extends Comparable<T>> implements IArvoreBinaria<T>
         System.out.println(no.getValor());
     }
 
+    /**
+     * Obtém a raiz da árvore.
+     *
+     * @return A raiz da árvore.
+     */
     @Override
     public No<T> getRaiz() {
         return raiz;
