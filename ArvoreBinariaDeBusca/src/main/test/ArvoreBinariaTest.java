@@ -39,10 +39,8 @@ public class ArvoreBinariaTest {
         No<Integer> noParaRemover = new No<>(5);
         No<Integer> noRemovido = arvore.remover(noParaRemover);
 
-        // Verifica se o nó retornado é o mesmo que tentamos remover
         assertEquals(noParaRemover, noRemovido);
 
-        // Verifica a estrutura da árvore após a remoção
         assertEquals(10, (int) arvore.getRaiz().getValor());
         assertEquals(3, (int) arvore.getRaiz().getFilhoEsq().getValor());
         assertEquals(15, (int) arvore.getRaiz().getFilhoDir().getValor());
